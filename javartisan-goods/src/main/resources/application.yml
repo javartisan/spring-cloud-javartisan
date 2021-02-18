@@ -4,7 +4,7 @@ server:
 eureka:
   instance:
     preferIpAddress: true
-    instance-id: javartisan-goods:9901
+    instance-id: GoodApi
   client:
     serviceUrl:
       defaultZone: http://localhost:9900/eureka/
