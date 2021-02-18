@@ -12,7 +12,7 @@
     <name>spring-cloud-javartisan</name>
 
     <modules>
-        <module>javartisan-register</module>
+        <module>javartisan-register-center</module>
     </modules>
 
     <properties>
