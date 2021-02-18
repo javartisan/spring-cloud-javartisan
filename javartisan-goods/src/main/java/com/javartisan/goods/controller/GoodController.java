@@ -14,6 +14,7 @@ public class GoodController {
 
     @RequestMapping("/get")
     public String get(String name) {
+        System.out.println("name request = " + name);
         return goodService.get(name);
     }
 }

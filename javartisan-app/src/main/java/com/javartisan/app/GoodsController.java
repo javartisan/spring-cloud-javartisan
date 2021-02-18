@@ -16,6 +16,8 @@ public class GoodsController {
 
     @RequestMapping("get")
     public String get() {
-        return goodApi.get("" + new Random().nextInt(100));
+        String value = goodApi.get("" + new Random().nextInt(100));
+        System.out.println(value);
+        return value;
     }
 }
