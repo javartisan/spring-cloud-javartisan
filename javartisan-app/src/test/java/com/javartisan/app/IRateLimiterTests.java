@@ -8,7 +8,7 @@ public class IRateLimiterTests {
 
     public static void main(String[] args) {
         IRateLimiter rateLimiter = new IRateLimiter(TimeUnit.SECONDS);
-        int SIZE = 500;
+        int SIZE = 700;
         CountDownLatch countDownLatch = new CountDownLatch(SIZE);
         for (int i = 0; i < SIZE; i++) {
 
