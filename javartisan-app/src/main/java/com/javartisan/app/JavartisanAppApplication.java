@@ -2,12 +2,16 @@ package com.javartisan.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = {"com.javartisan"})
+@EnableHystrixDashboard
+@EnableCircuitBreaker
 /**
  * ComponentScan 该注解是不会处理@FeignClient注解的扫描。需要使用EnableFeignClients指定@FeignClient扫描包路径
  *
