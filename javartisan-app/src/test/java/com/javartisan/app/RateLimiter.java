@@ -68,7 +68,7 @@ public class RateLimiter {
 
     /**
      * @param burstSize   - 允许作为突发事件进入系统的最大请求数
-     * @param averageRate - 预期的每秒请求数（新版本也支持使用分钟为单位）
+     * @param averageRate - 预期的每秒/分的请求数（取决于构造器中的TimeUnit参数,本示例以秒作为单位进行源码解读）
      * @return
      */
     private void refillToken(int burstSize, long averageRate, long currentTimeMillis) {
