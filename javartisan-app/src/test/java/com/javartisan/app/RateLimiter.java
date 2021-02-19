@@ -101,9 +101,10 @@ public class RateLimiter {
     }
 
     private boolean consumeToken(int burstSize) {
+        int i = 0;
         while (true) {
+            System.out.println("consumeToken = " + ++i);
             int currentLevel = consumedTokens.get();
-            System.out.println("currentLevel = " + currentLevel);
             if (currentLevel >= burstSize) {
                 return false;
             }

@@ -1,14 +1,13 @@
 package com.javartisan.app;
 
 
-import java.time.LocalDateTime;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-public class RateLimiterTests {
+public class IRateLimiterTests {
 
     public static void main(String[] args) {
-        RateLimiter rateLimiter = new RateLimiter(TimeUnit.SECONDS);
+        IRateLimiter rateLimiter = new IRateLimiter(TimeUnit.SECONDS);
         int SIZE = 500;
         CountDownLatch countDownLatch = new CountDownLatch(SIZE);
         for (int i = 0; i < SIZE; i++) {
