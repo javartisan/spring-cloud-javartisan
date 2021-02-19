@@ -4,13 +4,22 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * @author javartisan
+ * @email javartisan@163.com
+ */
 public class IRateLimiter {
 
+    /**
+     * 当前已经消费的token数量
+     */
     private AtomicInteger consumedTokenCnt = new AtomicInteger();
 
     private AtomicLong lastFillTokenTimeInMillSeconds = new AtomicLong();
 
-    //时间单位
+    /**
+     * 时间单位(构造器只支持秒或分)
+     */
     private Long timeUnitInMillSecond;
 
     public IRateLimiter() {
@@ -30,7 +39,10 @@ public class IRateLimiter {
         }
     }
 
-
+    /**
+     * @param burstCnt
+     * @param countPerTimeUnit 在{@link timeUnitInMillSecond}（秒或分）可以产生的token数量
+     */
     public void refillToken(int burstCnt, int countPerTimeUnit) {
 
         long lastFillTime = lastFillTokenTimeInMillSeconds.get();
@@ -57,6 +69,7 @@ public class IRateLimiter {
                     int tokenConsumedCnt = consumedTokenCnt.get();
                     // 由于burstCnt是每次传参，因此burstCnt可能会变小，因此需要去min操作，得到的结果也就是最多可以弥补的token数量（最多可以回血数）
                     int maximumTokenToAdd = Math.min(tokenConsumedCnt, burstCnt);
+                    // 最多消费数量为0，不允许为负数
                     int newConsumeCnt = Math.max(0, tokenConsumedCnt - maximumTokenToAdd);
                     if (consumedTokenCnt.compareAndSet(tokenConsumedCnt, newConsumeCnt)) {
                         return;
